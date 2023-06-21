@@ -8,9 +8,9 @@
 </head>
 <body>
     <header>
-        <a href="#" class="logo">Logo</a>
+        <a href="#" class="logo">< Iniciativa Dev /></a>
         <nav>
-            <a href="#home" style="--clr: #6369D1">Home</a>
+            <a href="#home" style="--clr: #6369D1" class="active">Home</a>
             <a href="#about" style="--clr: #60E1E0">About</a>
             <a href="#services" style="--clr: #D8D2E1">Services</a>
             <a href="#portfolios" style="--clr: #B88E8D">Portfolio</a>
@@ -24,5 +24,25 @@
         <section id="portfolios" style="--clr: #B88E8D">Portfolio</section>
         <section id="contact" style="--clr: #E86252">Contact</section>
     </main>
+    <script>
+        let sec = document.querySelectorAll('section');
+        let links = document.querySelectorAll('nav a');
+        window.onscroll = () => {
+            sec.forEach(section => {
+                let top = window.scrollY;
+                let offset = section.offsetTop - 60;
+                let height = section.offsetHeight;
+                let id = section.getAttribute('id');
+
+                if(top >= offset && top < offset + height){
+                    links.forEach(link => {
+                        link.classList.remove('active');
+                        document.querySelector('nav a[href*=' + id + ']').classList.add('active');
+                    })
+                }
+
+            });
+        }
+    </script>
 </body>
 </html>
